@@ -74,6 +74,11 @@
       const guan = document.getElementById('guan').value;
       const chi = document.getElementById('chi').value;
 
+      if (isNaN(hr) || hr <= 0) {
+        document.getElementById('result').innerHTML = '<p style="color: red;">Please enter a valid heart rate.</p>';
+        return;
+      }
+
       // Simulated TCM database
       const tcmDatabase = {
         "weak_strong_strong": {
