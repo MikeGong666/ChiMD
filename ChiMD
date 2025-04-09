@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pulse Diagnosis Tool</title>
+  <title>TCM Pulse Diagnosis Tool</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -37,7 +37,7 @@
   </style>
 </head>
 <body>
-  <h1>Pulse Diagnosis Tool</h1>
+  <h1>TCM Pulse Diagnosis Tool</h1>
 
   <label for="heartRate">Heart Rate (bpm):</label>
   <input type="number" id="heartRate" placeholder="e.g. 95">
@@ -79,7 +79,7 @@
         return;
       }
 
-      // Simulated TCM database
+      // Simulated TCM database for demonstration:
       const tcmDatabase = {
         "weak_strong_strong": {
           bloodPressure: "130/85 mmHg",
@@ -91,7 +91,7 @@
           diagnosis: "Balanced health.",
           recommendations: "Maintain a healthy lifestyle."
         },
-        // Add more conditions as needed
+        // You can expand this database with more combinations and details.
       };
 
       const key = `${cun}_${guan}_${chi}`;
@@ -103,8 +103,7 @@
 
       let analysis = `<p><strong>💓 Heart Rate:</strong> ${hr} bpm</p>`;
       analysis += `<p><strong>🩸 Estimated Blood Pressure:</strong> ${condition.bloodPressure}</p>`;
-      analysis += `<p><strong>🌀 Pulse Strength:</strong><br>
-        Cun: ${cun} <br> Guan: ${guan} <br> Chi: ${chi}</p>`;
+      analysis += `<p><strong>🌀 Pulse Strength:</strong><br>Cun: ${cun} <br>Guan: ${guan} <br>Chi: ${chi}</p>`;
       analysis += `<p><strong>🩺 Diagnosis:</strong><br>${condition.diagnosis}</p>`;
       analysis += `<p><strong>✅ Recommendations:</strong><br>${condition.recommendations}</p>`;
 
