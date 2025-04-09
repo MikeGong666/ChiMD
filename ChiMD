@@ -86,6 +86,11 @@
           diagnosis: "Possible liver Qi stagnation with kidney deficiency.",
           recommendations: "Engage in stress-relieving activities and consider herbal supplements."
         },
+        "normal_normal_normal": {
+          bloodPressure: "120/80 mmHg",
+          diagnosis: "Balanced health.",
+          recommendations: "Maintain a healthy lifestyle."
+        },
         // Add more conditions as needed
       };
 
