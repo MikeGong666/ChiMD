@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse Diagnosis Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    label { display: block; margin-top: 15px; }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #result {
+      background: white;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pulse Diagnosis Tool</h1>
+
+  <label for="heartRate">Heart Rate (bpm):</label>
+  <input type="number" id="heartRate" placeholder="e.g. 95">
+
+  <label for="cun">Cun Pulse:</label>
+  <select id="cun">
+    <option value="weak">Weak</option>
+    <option value="normal">Normal</option>
+    <option value="strong">Strong</option>
+  </select>
+
+  <label for="guan">Guan Pulse:</label>
+  <select id="guan">
+    <option value="weak">Weak</option>
+    <option value="normal">Normal</option>
+    <option value="strong">Strong</option>
+  </select>
+
+  <label for="chi">Chi Pulse:</label>
+  <select id="chi">
+    <option value="weak">Weak</option>
+    <option value="normal">Normal</option>
+    <option value="strong">Strong</option>
+  </select>
+
+  <button onclick="analyze()">Analyze</button>
+
+  <div id="result"></div>
+
+  <script>
+    function analyze() {
+      const hr = parseInt(document.getElementById('heartRate').value);
+      const cun = document.getElementById('cun').value;
+      const guan = document.getElementById('guan').value;
+      const chi = document.getElementById('chi').value;
+
+      // Simulated TCM database
+      const tcmDatabase = {
+        "weak_strong_strong": {
+          bloodPressure: "130/85 mmHg",
+          diagnosis: "Possible liver Qi stagnation with kidney deficiency.",
+          recommendations: "Engage in stress-relieving activities and consider herbal supplements."
+        },
+        // Add more conditions as needed
+      };
+
+      const key = `${cun}_${guan}_${chi}`;
+      const condition = tcmDatabase[key] || {
+        bloodPressure: "120/80 mmHg",
+        diagnosis: "Balanced health.",
+        recommendations: "Maintain a healthy lifestyle."
+      };
+
+      let analysis = `<p><strong>💓 Heart Rate:</strong> ${hr} bpm</p>`;
+      analysis += `<p><strong>🩸 Estimated Blood Pressure:</strong> ${condition.bloodPressure}</p>`;
+      analysis += `<p><strong>🌀 Pulse Strength:</strong><br>
+        Cun: ${cun} <br> Guan: ${guan} <br> Chi: ${chi}</p>`;
+      analysis += `<p><strong>🩺 Diagnosis:</strong><br>${condition.diagnosis}</p>`;
+      analysis += `<p><strong>✅ Recommendations:</strong><br>${condition.recommendations}</p>`;
+
+      document.getElementById('result').innerHTML = analysis;
+    }
+  </script>
+</body>
+</html>
